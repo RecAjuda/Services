@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  shelters_db:
+    container_name: shelters_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB= Shelter
+    ports:
+      - "4001:5432"
+    volumes: 
+      - postgres_shelter:/var/lib/postgresql/data/
+      

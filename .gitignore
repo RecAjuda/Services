@@ -5,3 +5,5 @@ Shelters.API/obj/*
 Shelters.API/bin/*
 .vs/*
 /obj
+Services/Shelter/Shelter.API/bin/*
+Services/Shelter/Shelter.API/obj/*
