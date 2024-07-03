@@ -1,0 +1,7 @@
+﻿/.idea/*
+BuildingBlocks/obj/*
+BuildingBlocks/bin/*
+Shelters.API/obj/*
+Shelters.API/bin/*
+.vs/*
+/obj
