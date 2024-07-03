@@ -1,4 +1,6 @@
-﻿namespace Shelters.API.Shelters.CreateShelter;
+﻿using Shelters.API.Shelters.CreateShelter;
+
+namespace Shelter.API.Shelters.CreateShelter;
 
 public record CreateShelterRequest(
     string Name,
@@ -6,13 +8,19 @@ public record CreateShelterRequest(
     double Latitude,
     double Longitude,
     string Neighborhood,
-    string Street)
+    string Street,
+    List<AgeRange> AgeRanges,
+    int Capacity,
+    string WorkingHourDescription,
+    List<ContactModel> Contacts)
 {
     public static implicit operator CreateShelterCommand(CreateShelterRequest request)
     {
-        return new CreateShelterCommand(request.Name, request.Type, request.Latitude, request.Longitude,
-            request.Neighborhood,
-            request.Street);
+        CreateShelterCommand command = new CreateShelterCommand(request.Name, request.Type, request.Latitude,
+            request.Longitude, request.Neighborhood, request.Street, request.AgeRanges, request.Capacity,
+            request.WorkingHourDescription, request.Contacts);
+
+        return command;
     }
 }
 
