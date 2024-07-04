@@ -1,7 +1,7 @@
 ﻿using BuildingBlocks.Base;
-using Shelter.API.ValueObjects;
+using RecAjuda.API.ValueObjects;
 
-namespace Shelter.API.Models;
+namespace RecAjuda.API.Models;
 
 public class Shelter(
     string name,

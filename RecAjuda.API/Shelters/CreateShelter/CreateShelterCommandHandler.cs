@@ -1,8 +1,8 @@
 ﻿using BuildingBlocks.CQRS;
-using Shelter.API.ValueObjects;
-using Shelter.API.Models;
+using RecAjuda.API.Models;
+using RecAjuda.API.ValueObjects;
 
-namespace Shelters.API.Shelters.CreateShelter;
+namespace RecAjuda.API.Shelters.CreateShelter;
 
 public record CreateShelterCommand(
     string Name,
@@ -16,13 +16,13 @@ public record CreateShelterCommand(
     string WorkingHourDescription,
     List<ContactModel> Contacts) : ICommand<CreateShelterResult>
 {
-    public static implicit operator Shelter.API.Models.Shelter(CreateShelterCommand command)
+    public static implicit operator Shelter(CreateShelterCommand command)
     {
         IEnumerable<Contact> contactsForSetInEntity =
             command.Contacts.Select(c => new Contact(c.PreFixNumber, c.Number));
         GeoCoordinate geoCoordinate = new GeoCoordinate(command.Latitude, command.Longitude);
         Address address = new Address(command.Neighborhood, command.Street);
-        Shelter.API.Models.Shelter shelterForReturnFormModel = new(command.Name, command.Type,
+        Shelter shelterForReturnFormModel = new(command.Name, command.Type,
             geoCoordinate, address,
             contactsForSetInEntity, command.AgeRanges, command.Capacity, command.WorkingHourDescription);
 
@@ -38,7 +38,7 @@ public class CreateShelterCommandHandler(IDocumentSession session)
 {
     public async Task<CreateShelterResult> Handle(CreateShelterCommand request, CancellationToken cancellationToken)
     {
-        Shelter.API.Models.Shelter shelterForCreate = request;
+        Shelter shelterForCreate = request;
         session.Store(shelterForCreate);
         await session.SaveChangesAsync(cancellationToken);
         return new CreateShelterResult(shelterForCreate.Id);

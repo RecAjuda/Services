@@ -1,6 +1,6 @@
 ﻿using BuildingBlocks.Base;
 
-namespace Shelter.API.Models;
+namespace RecAjuda.API.Models;
 
 public class ResourceShelter(
     Guid resourceId,

@@ -1,6 +1,6 @@
-﻿using Shelters.API.Shelters.CreateShelter;
+﻿using RecAjuda.API.Models;
 
-namespace Shelter.API.Shelters.CreateShelter;
+namespace RecAjuda.API.Shelters.CreateShelter;
 
 public record CreateShelterRequest(
     string Name,

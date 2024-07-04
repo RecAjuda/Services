@@ -1,4 +1,4 @@
-﻿namespace Shelter.API.ValueObjects;
+﻿namespace RecAjuda.API.ValueObjects;
 
 public record Address(string Neighborhood, string Street);
 
