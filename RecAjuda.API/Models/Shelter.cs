@@ -37,6 +37,25 @@ public class Shelter(
 
         ResourceShelters = resourceSheltersForAdd;
     }
+
+    public void Update(string name, ShelterType type, GeoCoordinate geoCoordinate, int capacity,
+        string workingHourDescription, IEnumerable<AgeRange> ageRanges, IEnumerable<Contact> contactsForUpdate)
+    {
+        Name = name;
+        Type = type;
+        GeoCoordinate = geoCoordinate;
+        Capacity = capacity;
+        WorkingHourDescription = workingHourDescription;
+        AgeRanges = ageRanges;
+        Contacts = contactsForUpdate;
+        UpdatedAt = DateTime.Now;
+    }
+
+    public void Delete()
+    {
+        StatusDefault = StatusDefault.Exclude;
+        UpdatedAt = DateTime.Now;
+    }
 }
 
 public enum ShelterType
